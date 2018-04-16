@@ -19,11 +19,12 @@
                 <main>
                     <resume :mode="mode" :display-resume="displayResume"></resume>
                 </main>
-                <login v-show="loginVisible" @loginsuccess="onLogin"  @close="loginVisible= false"></login>
-                <sign-up v-show="signUpVisible"></sign-up>
+                <login v-show="loginVisible" @loginsuccess="onLogin"  @close="loginVisible= false" @gotosignup="loginVisible= false;signUpVisible=true "></login>
+                <sign-up v-show="signUpVisible" @signsuccess="onSignUp"  @gotologin= "loginVisible= true;signUpVisible=false "  @close="signUpVisible= false"></sign-up>
                <share v-show="shareVisible" :share-link="shareLink" @close="shareVisible=false"></share>
                 <button class="exitPreview" @click="mode='edit'" v-if="mode==='preview'">退出预览</button>
             </div>
+            
         
     <script src="../vendors/av-min.js"></script>
     <script src="./js/av.js"></script>

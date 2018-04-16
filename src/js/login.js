@@ -22,7 +22,7 @@ Vue.component('login',{
         </div>
         <div class="actions">
             <button type="submit">提交</button>
-            <a href="#" >注册</a>
+            <a href="#"  @click="$emit('gotosignup')">注册</a>
         </div>
     </form>
 </div>

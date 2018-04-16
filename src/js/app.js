@@ -17,7 +17,7 @@ let app= new Vue({
         resume:{
             name: '姓名',
             gender: '女',
-            birthday: '1994年4月',
+            birthday: '1990年1月',
             jobTitle: '前端工程师',
             phone: '13266666666',
             email: 'example@example.com',
@@ -32,10 +32,7 @@ let app= new Vue({
                 {name: '请填写项目名称', link: 'http://...', keywords: '请填写关键词', description: '请详细描述'}
             ]
         },
-
-      
-        
-        shareLink: '',
+        shareLink: '暂时还没有分享链接，请编辑保存后再来',
         mode: 'edit' //preview
     },
     computed:{
@@ -45,35 +42,21 @@ let app= new Vue({
     },
     watch:{
         'currentUser.objectId': function(newValue, oldValue){
+            console.log(newValue)//新的 id
             if(newValue){
-                this.getResume(this.currentUser).then(resume =>{ this.resume= resume })
+                this.getResume(this.currentUser).then(resume =>{ this.resume= resume
+                })
             }//loginSuccess()后， 监听 id 变动 ，自动获取resume
         }
     },
+    
     methods: {
-        onEdit(key,value){//修改的value放到resume中
-            //key  =  skills[${index}].name = name值（字符串），并不是name
-            let regex= /\[(\d+)\]/g 
-            key = key.replace(regex, (match, number) => `.${number}`)
-            console.log(key)
-            //key = skills.0.name
-           let  keys= key.split('.') //[skills, 0, name]
-
-            console.log(keys)
-            let result= this.resume
-            for(let i=0; i< keys.length; i++){
-                if(i=== keys.length-1){ //一般最后一个i的value就是key
-                    result[keys[i]]= value //为value找到对应的key
-                }else{
-                    result= result[keys[i]]
-                }
-            }
-        },
         hasLogin(){
             return !!this.currentUser.objectId
             this.logoutVisible= true
         },
         onShare(){
+
             if(this.hasLogin()){
                 this.shareVisible = true
             }else{
@@ -84,6 +67,13 @@ let app= new Vue({
             this.currentUser.objectId = user.objectId
             this.currentUser.email= user.email
             this.loginVisible = false
+            window.location.reload()
+        },
+        onSignUp(user){
+            this.currentUser.objectId= user.objectId
+            this.currentUser.email= user.email
+            this.signUpVisible= false
+
         },
         onLogOut(){
             AV.User.logOut()
@@ -112,20 +102,17 @@ let app= new Vue({
         getResume(user){//通过id获取用户保存过的resume数据
             var query= new AV.Query('User')
             return query.get(user.objectId)
+        
                 .then((user)=>{
                     let resume= user.toJSON().resume
-                    // this.resume= resume
                     // Object.assign(this.resume, resume)
                     return resume  //return ,自己处理resume
-                    
                 }, (error)=>{
                 })
         },
-        
         print(){
             window.print()
         }
-        
     }
 })
 //获取当前用户
@@ -137,15 +124,10 @@ if(currentUser){
         app.resume= resume
     }) 
 }
-//判断当前是预览用户还是 当前用户
-//如果是预览用户 用户id找地址中的user_id, 在寻找数据库中的resume
-//file:///F:/1.1-web/vue-resume/src/index.html?user_Id=5acb7cb117d009006197896c
+//预览用户
 let search = location.search
-console.log(search)
-
 let regex = /user_Id=([^&]+)/
 let matches = search.match(regex)
-console.log(matches)
 let userId
 if(matches){
     userId= matches[1]
