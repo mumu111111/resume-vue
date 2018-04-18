@@ -9,10 +9,10 @@ Vue.component('app-aside',{
         </a>
         <nav class="menu">
             <ul class="clearfix">
-                <li><a class="button"  @click="$emit('clicksave')">保存</a></li>
-                <li><a class="button" @click="$emit('onshare')">分享</a></li>
+                <li><a class="button" href="javascript: void(0);"  @click="$emit('clicksave')">保存</a></li>
+                <li><a class="button" href="javascript: void(0);" @click="$emit('onshare')">分享</a></li>
                 <li>
-                    <a class="button" @click="$emit('print')">打印</a>
+                    <a class="button" href="javascript: void(0);" @click="$emit('print')">打印</a>
 
                 </li>
                 <li>
@@ -28,16 +28,3 @@ Vue.component('app-aside',{
 
     `
 })
-
-// <aside>
-//     <div class="upper">
-//         <ul class="actions">
-//             <li><button class="button" @click="$emit('clicksave')">保存</button></li>
-//             <li><button class="button" @click="$emit('onshare')">分享</button></li>
-//             <li><button class="button" @click="$emit('print')">打印</button></li>
-//         </ul>
-//     </div>
-//     <div class="down">
-//         <button class="button" @click="$emit('onlogout')" v-show="logoutVisible">登出</button>
-//     </div>
-// </aside>

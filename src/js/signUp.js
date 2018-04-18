@@ -3,7 +3,8 @@ Vue.component('signUp',{
         return {
             signUp:{
                 email: '',
-                password: ''
+                password: '',
+                confirmpsd: ''
             }
         }
     },
@@ -14,10 +15,12 @@ Vue.component('signUp',{
     <h2>Sign Up</h2>
     <form class="login" @submit.prevent="onSignUp">
         <label for="email">Email address</label>
-        <input type="text" id="email2" v-model="signUp.email">
+        <input placeholder="用户名均为邮箱地址" type="text" id="email2" v-model="signUp.email">
 
         <label for="psd">Password</label>
-        <input type="password" id="psd2" v-model="signUp.password">
+        <input type="password" id="psd21" v-model="signUp.password">
+        <label for="psd">confirm Password</label>
+        <input type="password" id="psd22" v-model="signUp.confirmpsd">
 
         <button type="submit" class="btn">sign up</button>
     </form>
@@ -33,6 +36,7 @@ Vue.component('signUp',{
             const user = new AV.User() //创建用户
             user.setUsername(this.signUp.email)
             user.setPassword(this.signUp.password)
+            user.setPassword(this.signUp.confirmpsd)
             user.setEmail(this.signUp.email)
             user.signUp().then((user)=>{
                 alert('注册成功')

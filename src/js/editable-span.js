@@ -3,7 +3,8 @@ Vue.component('editable-span',{
     template: `
         <span class="editableSpan">
                 <span v-show="!editing">{{value}}</span>
-                <input v-show="editing" type="text" v-bind:value="value" @input="triggerEdit">
+                <textarea rows="3" cols="40" v-show="editing" type="text" v-bind:value="value" @input="triggerEdit"></textarea>
+                
                 <button @click="editing = !editing" v-if="!displayed">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-icon5"></use>
@@ -20,8 +21,10 @@ Vue.component('editable-span',{
         triggerEdit(e){
             this.$emit('edit', e.target.value)
         }
+        
     }
 })
+                // <input v-show="editing" type="text" v-bind:value="value" @input="triggerEdit">
 
 // Vue.component('editable-span',{
 //     props: ['value','displayed'],

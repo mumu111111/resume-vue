@@ -6,12 +6,22 @@
     transform: translate(-50%, -50%);
     background: white;
     box-shadow: 0 0 5px black;
-    padding: 30px;
+    padding: 20px;
 }
-.share h2{}
+.share h2{
+    margin-bottom: 10px;
+}
 .share textarea{
     word-break: break-all;
     width: 100%;
     height: 4em;
     resize: none;
+    border: none;
+}
+.share .close{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 1.5em;
+    height: 1.5em;
 }

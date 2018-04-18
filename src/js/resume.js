@@ -5,7 +5,7 @@ Vue.component('resume',{
     props: ['mode','displayResume'],
     
     template: `
-    <div>
+    <div class="resume">
 		<div  class="userCard" id="siteAbout">
         <div class="text clearfix">
             <h1>
@@ -72,7 +72,11 @@ Vue.component('resume',{
                     </p>
                 </div>
                 <!-- 删除按钮  样式肯定得自己写  定位 -->
-                <span class="remove" v-if="index>=4 && mode==='edit'" @click="removeSkill(index)">x</span>
+                <span  v-if="index>=4 && mode==='edit'" @click="removeSkill(index)">
+                    <svg class="icon remove" aria-hidden="true">
+                        <use xlink:href="#icon-ai67"></use>
+                    </svg>
+                </span>
             </div>
         </li>
     </ul>
@@ -81,7 +85,7 @@ Vue.component('resume',{
     </div>
 </div>
 
-<div class="skillCard projectCard" id="siteAbout">
+<div class="projectCard" id="siteAbout">
 <h2>作品</h2>
 <ul>
     <li v-for="project,index in displayResume.projects">
@@ -104,7 +108,11 @@ Vue.component('resume',{
             </p>
         </div>
         <!-- 删除按钮  样式  定位 -->
-        <span class="remove" @click="removeProject(index)" v-if="index>=2 && mode==='edit'">x</span>
+        <span  @click="removeProject(index)" v-if="index>=2 && mode==='edit'">
+            <svg class="icon remove" aria-hidden="true">
+                <use xlink:href="#icon-ai67"></use>
+            </svg>
+        </span>
     </li>
 </ul>
 <div v-if="mode==='edit'" class="add-wrapper">

@@ -12,7 +12,7 @@ Vue.component('login',{
         <h2>Sign In</h2>
         <form class="login" @submit.prevent="onLogin">
             <label for="email">Email address</label>
-            <input type="text" id="email" v-model="login.email">
+            <input placeholder="用户名均为邮箱地址" type="text" id="email" v-model="login.email">
 
             <label for="psd">Password</label>
             <input type="password" id="psd" v-model="login.password">

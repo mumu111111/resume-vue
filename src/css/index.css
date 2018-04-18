@@ -5,13 +5,38 @@ ul,ol{ list-style: none; }
 body{ font-size: 18px; }
 button { font: inherit; }
 div[v-cloak] {display: none;}
-@media (min-width: 500px){
+/* @media (min-width: 500px){
     .page {
         height: 100vh;
         overflow: hidden;
         display: flex;
     }
+} */
+@media (max-width: 420px){
+    .page {
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+    }
+    .topNavBar{
+        padding: 0;
+    } 
+    .userCard ul{
+        flex-wrap: wrap;
+    }
+    .userCard ul >  li {
+        width: 100%;
+    }
+    .resume{
+        padding: 15px;
+    }
 }
+
+@media (max-width: 991px) {
+   
+  }
+  
+
 .page > aside{
     width: 100px;
     border-right: 1px solid #ddd;
@@ -46,28 +71,6 @@ div[v-cloak] {display: none;}
     top: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*导航*/
 .topNavBar {
     padding: 10px 0px;
@@ -101,8 +104,8 @@ div[v-cloak] {display: none;}
 }
 .topNavBar  nav > ul > li {
     float: left;
-    margin-left: 17px;
-    margin-right: 17px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 .topNavBar  nav > ul > li > a {
     font-size: 18px;

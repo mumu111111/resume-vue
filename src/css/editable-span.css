@@ -8,6 +8,9 @@
     top: 0;
     z-index: 1;
 }
+.editableSpan textarea{
+    resize: none;
+}
 .editableSpan:hover button{
     display: inline-block;
     width: 30px;

@@ -1,95 +1,12 @@
 .resume{
-    
     margin: 0 auto;
  }
-/*  
-.resume > section{
-    margin: 50px 0;
-}
-.resume > section > h1{
-    text-align: center;
-    margin: 20px;
-}
-.resume > section > h2{
-    text-align: center;
-    margin: 20px;
-}
-.resume .profile{
-    text-align: center;
-}
-.resume .skills > ul{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.resume .skills > ul > li{
-    width: 48%;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 10px;
-}
-.resume .projects{
-
-}
-.resume .projects > ol{
-    
-}
-.resume .projects > ol > li{
-    margin: 30px 0;
-    border: 1px solid #ddd;
-    padding: 10px;
-}
-.resume .projects header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.resume .projects header .name{
-    margin-right: 1em;
-}
-.resume .projects header .start{
-    display: flex;
-}
-
-.resume .projects header .start{
-    
-}
-.skills > ul >li,
-.projects > ol > li{
-    position: relative;
-}
-.skills > ul > li .remove,
-.projects > ol > li .remove
-{
-    position: absolute;
-    top: -5px;
-    right: 5px;
-    cursor: pointer;
-}       
-.skills > ul > li .add,
-.projects > ol > li .add{
-    cursor: pointer;
-} */
-
-
-
-
-
-
-
-
-
 .icon {
    width: 1em; height: 1em;
    vertical-align: -0.15em;
-   fill: #E48B8D;
+   fill: #e6686a;
    overflow: hidden;
 }
-
-
-
-
 
 /*user card  个人信息*/
 
@@ -102,36 +19,26 @@
     /* margin-top: -340px; */
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
     border: 1px solid #E48B8D;
-    
 }
-
 
 .userCard .text{
    padding: 20px;
-
 }
 .userCard .text h1{
     text-align: center;
 }
 .userCard .text hr{
     margin: 20px 0;
-
 }
-
 .text ul {
     display: flex;
     justify-content: space-between;
 }
 
-
-
-
-
 /*技能*/
-
 .skillCard{
-    width: 970px;
-    margin: 60px;
+    max-width: 970px;
+    margin: 30px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -143,21 +50,17 @@
     font-weight: 600;
 }
 .skillCard ul {
-
     width: 100%;
-    padding: 20px 0;
+    padding: 5px 0;
     margin-top: 20px;
 }
-
 .skillCard ul >li{
     margin-bottom: 20px; 
     background: #fff;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
     border-radius: 3px;
     border: 1px solid #F5C7C8;
-    
 }
-
 .skillCard .add{
     display: block;
     margin-top: 20px;
@@ -172,19 +75,15 @@
 .skillCard .add:hover{
     background: #E48B8D;
 }
-
-
 .skillCard .text p{
     padding: 20px;
 }
-
 .skillCard .text hr{
     margin: 20px 0;
 }
 .skillCard  footer{
     background-color: #E48B8D; 
     border-radius: 2px;
-    
 }
 .skillCard  footer h3{
     display: inline-block;
@@ -192,6 +91,66 @@
     line-height: 30px;
     padding: 10px;
 }
+.projectCard{
+    max-width: 970px;
+    margin: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.projectCard h2{
+    text-align: center;
+    font-size: 34px;
+    line-height: 1.2;
+    color: #3D4451;
+    font-weight: 600;
+}
+.projectCard ul {
+    width: 100%;
+    padding: 5px 0;
+    margin-top: 20px;
+}
+.projectCard ul >li{
+    margin-bottom: 20px; 
+    background: #fff;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+    border-radius: 3px;
+    border: 1px solid #F5C7C8;
+}
+.projectCard .add{
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 0;    
+    border-color: #E48B8D;
+    text-align: center;
+    /* margin-top: -340px; */
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+    border-radius: 3px;
+}
+.projectCard .add:hover{
+    background: #E48B8D;
+}
+.projectCard .text p{
+    padding: 20px;
+}
+.projectCard .text hr{
+    margin: 20px 0;
+}
+.projectCard  footer{
+    background-color: #E48B8D; 
+    border-radius: 2px;
+}
+.projectCard  footer h3{
+    display: inline-block;
+    color: white;
+    line-height: 30px;
+    padding: 10px;
+}
+
+
+
+
+
 
 .skillCard .skill,
 .projectCard li {
@@ -200,10 +159,17 @@
 .skillCard .skill .remove,
 .projectCard li .remove{
     position: absolute;
-    top: -5px;
+    top: 15px;
     right: 5px;
     cursor: pointer;
+    width: 1.5em;
+    height: 1.5em;
+    fill: #fff;
 }
+
+
+
+
 
 
 
