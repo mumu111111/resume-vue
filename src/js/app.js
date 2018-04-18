@@ -42,15 +42,58 @@ let app= new Vue({
     },
     watch:{
         'currentUser.objectId': function(newValue, oldValue){
+            console.log(oldValue)
             console.log(newValue)//新的 id
             if(newValue){
-                this.getResume(this.currentUser).then(resume =>{ this.resume= resume
+                console.log('当前的this.resume')
+                
+                console.log(this.resume)
+                // this.saveResume()
+                this.getResume(this.currentUser).then(resume =>{ 
+                   
+                        this.resume= resume
+                        console.log("被获取新id的resume"+this.resume)
+                    
+                    
                 })
             }//loginSuccess()后， 监听 id 变动 ，自动获取resume
         }
     },
     
     methods: {
+        
+        onEdit(key,value){//修改的value放到resume中
+            //key  =  skills[${index}].name = name值（字符串），并不是name
+            console.log(6)
+
+            console.log(key) 
+            console.log(value)
+            let regex= /\[(\d+)\]/g 
+            console.log('key')
+            console.log(key)
+            
+            
+            key = key.replace(regex, (match, number) => `.${number}`)
+            
+            console.log(key)
+            //key = skills.0.name
+           let  keys= key.split('.') //[skills, 0, name]
+
+            console.log(keys)
+            let result= this.resume
+            console.log(result)
+            for(let i=0; i< keys.length; i++){
+                if(i=== keys.length-1){ //一般最后一个i的value就是key
+                    result[keys[i]]= value //为value找到对应的key
+                    console.log(result)
+                    console.log('将新的值传给 resume数据表中')
+                }else{
+                    result= result[keys[i]]
+                    console.log(result)
+                }
+            }
+
+        },
         hasLogin(){
             return !!this.currentUser.objectId
             this.logoutVisible= true
@@ -68,6 +111,7 @@ let app= new Vue({
             this.currentUser.email= user.email
             this.loginVisible = false
             window.location.reload()
+            console.log('登录成功')
         },
         onSignUp(user){
             this.currentUser.objectId= user.objectId
@@ -83,16 +127,25 @@ let app= new Vue({
         
         onClickSave(){
             let currentUser = AV.User.current()
+            console.log(1)
             if(!currentUser){
                 this.loginVisible= true
             }else{
                 this.saveResume()
+                console.log(2)
             }
         },
         saveResume(){
-            let {objectId}= AV.User.current().toJSON()
+            console.log(3)
+            let {objectId} = AV.User.current().toJSON()
+            console.log('当前用户的id')
+            console.log({objectId})
             let user= AV.Object.createWithoutData('User', objectId)
+            console.log(4)
+            console.log('当有登录账户时， 将当前的resume 作为 resume 存入')
+            console.log(this.resume)
             user.set('resume', this.resume)
+
             user.save().then(()=>{
                 alert('保存成功')
             },()=>{
@@ -100,11 +153,14 @@ let app= new Vue({
             })
         },
         getResume(user){//通过id获取用户保存过的resume数据
-            var query= new AV.Query('User')
+            var query= new AV.Query('User') //user 数据库
+            console.log(user.objectId)
             return query.get(user.objectId)
         
                 .then((user)=>{
+                console.dir(user.toJSON().resume)
                     let resume= user.toJSON().resume
+                    console.log('数据表中的id的user'+resume)
                     // Object.assign(this.resume, resume)
                     return resume  //return ,自己处理resume
                 }, (error)=>{
@@ -117,9 +173,23 @@ let app= new Vue({
 })
 //获取当前用户
 let currentUser= AV.User.current()
+console.log(app.resume)
+app.resume= app.resume
+
+console.log(currentUser)
+// let user= AV.Object.createWithoutData('User', objectId)
 if(currentUser){
     app.currentUser= currentUser.toJSON()
     app.shareLink= location.origin + location.pathname + '?user_Id='+ app.currentUser.objectId
+    // app.saveResume()
+    let user= AV.Object.createWithoutData('User', app.currentUser.objectId)
+    console.log(4)
+    console.log('当有登录账户时， 将当前的resume 作为 resume 存入')
+    console.log(this.resume)
+    user.set('resume', this.resume)
+
+    // user.save()
+
     app.getResume(app.currentUser).then(resume=>{
         app.resume= resume
     }) 

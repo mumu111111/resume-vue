@@ -4,7 +4,11 @@ Vue.component('editable-span',{
         <span class="editableSpan">
                 <span v-show="!editing">{{value}}</span>
                 <input v-show="editing" type="text" v-bind:value="value" @input="triggerEdit">
-                <button @click="editing = !editing" v-if="!displayed">edit</button>
+                <button @click="editing = !editing" v-if="!displayed">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-icon5"></use>
+                    </svg>
+                </button>
         </span>
     `,
     data(){
@@ -18,3 +22,27 @@ Vue.component('editable-span',{
         }
     }
 })
+
+// Vue.component('editable-span',{
+//     props: ['value','displayed'],
+//     data(){
+//         return {
+//             editing: false
+//         }
+//     },
+//     template: `
+//         <span class="editableSpan">
+//                 <span v-show="!editing">{{value}}</span>
+//                 <input v-show="editing" type="text" :value="value" @input="triggerEdit">
+//                 <button @click="editing = !editing" v-if="!displayed">edit</button>
+//         </span>
+//     `,
+  
+//     methods: {
+//         triggerEdit(e){
+//             console.log('5 修改input')
+//             this.$emit('edit', e.target.value)
+            
+//         }
+//     }
+// })

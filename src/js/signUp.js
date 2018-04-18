@@ -8,23 +8,24 @@ Vue.component('signUp',{
         }
     },
     template: `
-    <div  class="signUp" v-cloak>
-    <form class="form" @submit.prevent="onSignUp">
-        <h2>注册</h2>
-        <button type="button" @click="$emit('close')">关闭</button>
-        <div class="row">
-            <label>邮箱</label>
-            <input type="text" v-model="signUp.email">
-        </div>
-        <div class="row">
-            <label>密码</label>
-            <input type="password" v-model="signUp.password">
-        </div>
-        <div class="actions">
-            <button type="submit">提交</button>
-            <a href="#" @click="$emit('gotologin')">登录</a>
-        </div>
+    <div  class="login-container" v-cloak>
+    
+    
+    <h2>Sign Up</h2>
+    <form class="login" @submit.prevent="onSignUp">
+        <label for="email">Email address</label>
+        <input type="text" id="email2" v-model="signUp.email">
+
+        <label for="psd">Password</label>
+        <input type="password" id="psd2" v-model="signUp.password">
+
+        <button type="submit" class="btn">sign up</button>
     </form>
+    <div class="signup">
+        <a href="#" @click="$emit('gotologin')">or Sign in</a>
+    </div>
+    
+
 </div>
     `,
     methods:{
@@ -50,3 +51,5 @@ Vue.component('signUp',{
         }
     }
 })
+
+/* <button type="button" @click="$emit('close')">关闭</button> */

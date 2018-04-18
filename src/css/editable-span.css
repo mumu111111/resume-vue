@@ -10,4 +10,7 @@
 }
 .editableSpan:hover button{
     display: inline-block;
+    width: 30px;
+    border: none;
+    background: #fff;
 }

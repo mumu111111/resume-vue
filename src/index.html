@@ -13,11 +13,14 @@
     <link rel="stylesheet" href="./css/print.css" media="print">
 </head>
 
+
+
+
 <body>
         <div class="page" id="app">
                 <app-aside v-show="mode==='edit'"  :logout-visible='hasLogin()' @clicksave="onClickSave" @onshare="onShare" @print="print" @onlogout="onLogOut"></app-aside>
                 <main>
-                    <resume :mode="mode" :display-resume="displayResume"></resume>
+                    <resume :mode="mode" :display-resume="displayResume" :resume="resume" @on-edit="onEdit"></resume>
                 </main>
                 <login v-show="loginVisible" @loginsuccess="onLogin"  @close="loginVisible= false" @gotosignup="loginVisible= false;signUpVisible=true "></login>
                 <sign-up v-show="signUpVisible" @signsuccess="onSignUp"  @gotologin= "loginVisible= true;signUpVisible=false "  @close="signUpVisible= false"></sign-up>
@@ -25,7 +28,7 @@
                 <button class="exitPreview" @click="mode='edit'" v-if="mode==='preview'">退出预览</button>
             </div>
             
-        
+    <script src="//at.alicdn.com/t/font_631647_hagheqf6tzbk2o6r.js"></script>
     <script src="../vendors/av-min.js"></script>
     <script src="./js/av.js"></script>
     <script src="../vendors/vue.min.js"></script>

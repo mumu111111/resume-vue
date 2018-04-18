@@ -1,13 +1,24 @@
-.page > aside{
+.page  .topNavBar{
     display: none;
 }
 .page{
     padding: 20px;
 }
-.skills .remove,
-.skills .add,
-.projects .remove,
-.projects .add{
+
+.userCard,.skillCard li{
+    box-shadow: none;
+}
+
+.skillCard .remove,
+.skillCard .add-wrapper{
     display: none;
 }
 
+
+/**/
+.userCard ,.skillCard{
+    width: 650px;
+}
+.userCard{
+    margin-top: 20px;
+}
