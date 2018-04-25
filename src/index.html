@@ -16,7 +16,7 @@
 <body>
         <div class="page" id="app">
                 <app-aside v-show="mode==='edit'"  :logout-visible='hasLogin()' @clicksave="onClickSave" @onshare="onShare" @print="print" @onlogout="onLogOut"></app-aside>
-                <main>
+                <main :class="{mask: isClick}">
                     <resume :mode="mode" :display-resume="displayResume" :resume="resume" @on-edit="onEdit"></resume>
                 </main>
                 <login v-show="loginVisible" @loginsuccess="onLogin"  @close="loginVisible= false" @gotosignup="loginVisible= false;signUpVisible=true "></login>

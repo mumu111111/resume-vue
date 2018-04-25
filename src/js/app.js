@@ -6,6 +6,7 @@ let app= new Vue({
         logoutVisible: false,
         signUpVisible:false,
         shareVisible: false,
+        isClick:false,
         currentUser:{
             objectId: undefined,
             email: ''
@@ -46,28 +47,19 @@ let app= new Vue({
             console.log(oldValue)
             console.log(newValue)//新的 id
             if(newValue){
-                let user= AV.Object.createWithoutData('User', this.currentUser.objectId)
-                console.log(4)
-                console.log('当有登录账户时， 将当前的resume 作为 resume 存入')
-                user.set('resume', this.resume)
-                user.save()
                 this.getResume(this.currentUser).then(resume =>{ this.resume= resume })
             }
         }
     },
     
     methods: {
-        
         onEdit(key,value){
             //key  =  skills[${index}].name = name值（字符串），并不是name
             let regex= /\[(\d+)\]/g 
-            console.log('key')
-            console.log(key)
             key = key.replace(regex, (match, number) => `.${number}`)
             //key = skills.0.name
            let  keys= key.split('.') //[skills, 0, name]
             let result= this.resume
-            console.log(result)
             for(let i=0; i< keys.length; i++){
                 if(i=== keys.length-1){ //一般最后一个i的value就是key
                     result[keys[i]]= value //为value找到对应的key
@@ -75,7 +67,6 @@ let app= new Vue({
                     result= result[keys[i]]
                 }
             }
-
         },
         hasLogin(){
             return !!this.currentUser.objectId
@@ -92,12 +83,23 @@ let app= new Vue({
             this.currentUser.objectId = user.objectId
             this.currentUser.email= user.email
             this.loginVisible = false
+            this.isClick= false
             window.location.reload()
         },
-        onSignUp(user){
-            this.currentUser.objectId = user.objectId
-            this.currentUser.email= user.email
+        onSignUp(userData){
+            this.currentUser.objectId = userData.objectId
+            this.currentUser.email= userData.email
             this.signUpVisible= false
+            console.log(this.resume)
+            this.resume= this.resume
+            // let {objectId} = AV.User.current().toJSON()
+            // console.log({objectId})
+            let user= AV.Object.createWithoutData('User', this.currentUser.objectId)
+            console.log(this.resume)
+            user.set('resume', this.resume)
+            console.log(user)
+            user.save()
+            this.isClick= false
             window.location.reload()
         },
         onLogOut(){
@@ -111,9 +113,10 @@ let app= new Vue({
             console.log(1)
             if(!currentUser){
                 this.loginVisible= true
+                this.isClick = true
             }else{
                 this.saveResume()
-                console.log(2)
+
             }
         },
         saveResume(){
@@ -122,7 +125,7 @@ let app= new Vue({
             let user= AV.Object.createWithoutData('User', objectId)
             console.log(this.resume)
             user.set('resume', this.resume)
-
+            console.log(user)
             user.save().then(()=>{
                 alert('保存成功')
             },()=>{
@@ -140,6 +143,7 @@ let app= new Vue({
                     // Object.assign(this.resume, resume)
                     return resume  //return ,自己处理resume
                 }, (error)=>{
+                    alert('暂时还没有数据')
                 })
         },
         print(){
@@ -150,55 +154,15 @@ let app= new Vue({
 
 let currentUser= AV.User.current()
 console.log(currentUser)
-// app.resume= app.resume
 if(currentUser){
-// app.resume= app.resume
     app.currentUser= currentUser.toJSON()
     app.shareLink= location.origin + location.pathname + '?user_Id='+ app.currentUser.objectId
     app.getResume(app.currentUser).then(resume=>{
         app.resume= resume
+        
     }) 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //获取当前用户
-// let currentUser= AV.User.current()
-// console.log(app.resume)
-// // app.resume= app.resume
-
-// console.log(currentUser)
-// // let user= AV.Object.createWithoutData('User', objectId)
-// if(currentUser){
-//     app.currentUser= currentUser.toJSON()
-
-//     let user= AV.Object.createWithoutData('User', app.currentUser.objectId)
-//     console.log(4)
-//     console.log('当有登录账户时， 将当前的resume 作为 resume 存入')
-//     user.set('resume', app.resume)
-//     user.save().then(()=>alert('有数据了'))
-
-//     app.shareLink= location.origin + location.pathname + '?user_Id='+ app.currentUser.objectId
-//     // app.saveResume()
-   
-
-//     // 
-
-//     app.getResume(app.currentUser).then(resume=>{
-//         app.resume= resume
-//     }) 
-// }
 //预览用户
 let search = location.search
 let regex = /user_Id=([^&]+)/

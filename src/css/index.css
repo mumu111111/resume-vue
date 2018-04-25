@@ -134,7 +134,18 @@ div[v-cloak] {display: none;}
 .topNavBar .logo .card{
     color: #9a9da2;
 }
+.exitPreview{
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    margin-top: 5px;
+    text-align: center;
+    border: none;
+    background-color: #279f43;
+    cursor: pointer;
 
+}
 
 
 
