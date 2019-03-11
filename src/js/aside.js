@@ -9,6 +9,8 @@ Vue.component('app-aside',{
         </a>
         <nav class="menu">
             <ul class="clearfix">
+                <li><a class="button" href="javascript: void(0);"  @click="$emit('clickedit')">编辑</a></li>
+            
                 <li><a class="button" href="javascript: void(0);"  @click="$emit('clicksave')">保存</a></li>
                 <li><a class="button" href="javascript: void(0);" @click="$emit('onshare')">分享</a></li>
                 <li>

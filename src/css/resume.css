@@ -4,7 +4,7 @@
 .icon {
    width: 1em; height: 1em;
    vertical-align: -0.15em;
-   fill: #e6686a;
+   fill: #3a8ee6;
    overflow: hidden;
 }
 
@@ -15,10 +15,10 @@
     max-width: 970px;
     margin-left: auto;
     margin-right: auto;
-    background: #fff;
     /* margin-top: -340px; */
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
-    border: 1px solid #E48B8D;
+    background: #fff;
+    border: 1px solid #3a8ee6;
+    border-radius: 3px;
 }
 
 .userCard .text{
@@ -29,6 +29,7 @@
 }
 .userCard .text hr{
     margin: 20px 0;
+    border: 1px solid #3a8ee6;
 }
 .text ul {
     display: flex;
@@ -44,7 +45,7 @@
 }
 .skillCard h2{
     text-align: center;
-    font-size: 34px;
+    font-size: 25px;
     line-height: 1.2;
     color: #3D4451;
     font-weight: 600;
@@ -56,24 +57,22 @@
 }
 .skillCard ul >li{
     margin-bottom: 20px; 
-    background: #fff;
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
     border-radius: 3px;
-    border: 1px solid #F5C7C8;
+    border: 1px solid #3a8ee6;
 }
 .skillCard .add{
     display: block;
     margin-top: 20px;
     width: 100%;
     padding: 10px 0;    
-    border-color: #E48B8D;
+    border-color: #918A8A;
     text-align: center;
     /* margin-top: -340px; */
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+    border: 1px solid #eee;
     border-radius: 3px;
 }
 .skillCard .add:hover{
-    background: #E48B8D;
+    border: 1px solid #3a8ee6;
 }
 .skillCard .text p{
     padding: 20px;
@@ -82,12 +81,12 @@
     margin: 20px 0;
 }
 .skillCard  footer{
-    background-color: #E48B8D; 
     border-radius: 2px;
+    border-bottom: 1px solid #3a8ee6;
 }
 .skillCard  footer h3{
     display: inline-block;
-    color: white;
+    color: #000;
     line-height: 30px;
     padding: 10px;
 }
@@ -99,7 +98,7 @@
 }
 .projectCard h2{
     text-align: center;
-    font-size: 34px;
+    font-size: 25px;
     line-height: 1.2;
     color: #3D4451;
     font-weight: 600;
@@ -111,24 +110,22 @@
 }
 .projectCard ul >li{
     margin-bottom: 20px; 
-    background: #fff;
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
     border-radius: 3px;
-    border: 1px solid #F5C7C8;
+    border: 1px solid #3a8ee6;
 }
 .projectCard .add{
     display: block;
     margin-top: 20px;
     width: 100%;
     padding: 10px 0;    
-    border-color: #E48B8D;
+    border-color: #AFAAAB;
     text-align: center;
     /* margin-top: -340px; */
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+    border: 1px solid #eee;
     border-radius: 3px;
 }
 .projectCard .add:hover{
-    background: #E48B8D;
+    border: 1px solid #3a8ee6;
 }
 .projectCard .text p{
     padding: 20px;
@@ -137,12 +134,12 @@
     margin: 20px 0;
 }
 .projectCard  footer{
-    background-color: #E48B8D; 
     border-radius: 2px;
+    border-bottom: 1px solid #3a8ee6;
 }
 .projectCard  footer h3{
     display: inline-block;
-    color: white;
+    color: #000;
     line-height: 30px;
     padding: 10px;
 }
@@ -164,7 +161,7 @@
     cursor: pointer;
     width: 1.5em;
     height: 1.5em;
-    fill: #fff;
+    fill: #3a8ee6;
 }
 
 main.mask{

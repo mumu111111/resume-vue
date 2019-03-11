@@ -104,12 +104,12 @@ div[v-cloak] {display: none;}
 }
 .topNavBar  nav > ul > li {
     float: left;
-    margin-left: 12px;
-    margin-right: 12px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 .topNavBar  nav > ul > li > a {
-    font-size: 18px;
-    color: inherit;
+    font-size: 16px;
+    color: #3a8ee6;
     border-top: 3px solid transparent;    
     border-bottom: 3px solid transparent;
     padding-top: 5px;    
@@ -128,7 +128,7 @@ div[v-cloak] {display: none;}
     padding-bottom: 4px;
 }
 .topNavBar .logo .rs {
-    color: #e6686a;
+    color: #3a8ee6;
     margin-right: 4px;
 }
 .topNavBar .logo .card{

@@ -12,23 +12,29 @@
     <link rel="stylesheet" href="./css/signUp.css">
     <link rel="stylesheet" href="./css/share.css">
     <link rel="stylesheet" href="./css/print.css" media="print">
+
+ 
 </head>
 <body>
         <div class="page" id="app">
-                <app-aside v-show="mode==='edit'"  :logout-visible='hasLogin()' @clicksave="onClickSave" @onshare="onShare" @print="print" @onlogout="onLogOut"></app-aside>
+                <app-aside   :logout-visible='hasLogin()' @clickedit="onClickEdit"  @clicksave="onClickSave" @onshare="onShare" @print="print" @onlogout="onLogOut"></app-aside>
                 <main :class="{mask: isClick}">
-                    <resume :mode="mode" :display-resume="displayResume" :resume="resume" @on-edit="onEdit"></resume>
+                    <resume :mode="mode":edit="edit" :display-resume="displayResume" :resume="resume" @on-edit="onEdit"></resume>
                 </main>
                 <login v-show="loginVisible" @loginsuccess="onLogin"  @close="loginVisible= false" @gotosignup="loginVisible= false;signUpVisible=true "></login>
                 <sign-up v-show="signUpVisible" @signsuccess="onSignUp"  @gotologin= "loginVisible= true;signUpVisible=false "  @close="signUpVisible= false"></sign-up>
                <share v-show="shareVisible" :share-link="shareLink" @close="shareVisible=false"></share>
-                <button class="exitPreview" @click="mode='edit'" v-if="mode==='preview'">退出预览</button>
+                <!-- <button class="exitPreview" @click="mode='edit'" v-if="mode==='preview'">退出预览</button> -->
             </div>
             
     <script src="//at.alicdn.com/t/font_631647_q3wc6ip4d4c2fbt9.js"></script>
     <script src="../vendors/av-min.js"></script>
     <script src="./js/av.js"></script>
     <script src="../vendors/vue.min.js"></script>
+           <!-- 引入样式 -->
+           <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+           <!-- 引入组件库 -->
+           <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="./js/editable-span.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/signUp.js"></script>

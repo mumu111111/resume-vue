@@ -1,29 +1,53 @@
 Vue.component('editable-span',{
-    props: ['value','displayed'],
+    props: ['edit','value','displayed'],
     template: `
         <span class="editableSpan">
-                <span v-show="!editing">{{value}}</span>
-                <textarea rows="3" cols="40" v-show="editing" type="text" v-bind:value="value" @input="triggerEdit"></textarea>
+                <span v-show="!edit">{{value}}</span>
                 
-                <button @click="editing = !editing" v-if="!displayed">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-icon5"></use>
-                    </svg>
-                </button>
+           
+
+            <div v-show="edit">
+                <el-input placeholder="请输入内容" :value="value" @input="triggerEdit" >
+                <template slot="prepend">编辑</template>
+                </el-input>
+            </div>
+
+
+
         </span>
     `,
     data(){
         return {
-            editing: false
+            edit: false,
+            value: ''
         }
     },
     methods: {
-        triggerEdit(e){
-            this.$emit('edit', e.target.value)
+        triggerEdit(value){
+            if (this.value) {
+                this.value = value
+              }
+            this.$emit('edit', value)
+
         }
         
     }
 })
+
+// <div class="input-group mb-3" v-show="edit">
+// <div class="input-group-prepend">
+//     <span class="input-group-text">编辑内容</span>
+// </div>
+// <input type="text" v-bind:value="value" @input="triggerEdit">
+// </div>
+
+// <button @click="editing = !editing" v-if="!displayed">
+// <svg class="icon" aria-hidden="true">
+//     <use xlink:href="#icon-icon5"></use>
+// </svg>
+// </button>
+/* <textarea rows="3" cols="40" v-show="editing" type="text" v-bind:value="value" @input="triggerEdit"></textarea> */
+
                 // <input v-show="editing" type="text" v-bind:value="value" @input="triggerEdit">
 
 // Vue.component('editable-span',{

@@ -1,7 +1,7 @@
 let app= new Vue({
     el: '#app',
     data:{
-        editingName: false,
+        edit: false,
         loginVisible: false,
         logoutVisible: false,
         signUpVisible:false,
@@ -17,21 +17,21 @@ let app= new Vue({
         },
         previewResume:{},
         resume:{
-            name: 'Hello! 我叫xxx',
-            gender: '女',
-            birthday: 'XXXX年X月',
+            name: '姓名',
+            gender: '性别',
+            birthday: '1990年/09月',
             jobTitle: '职位名称',
             phone: '13266666666',
-            email: 'example@example.com',
+            email: 'qq@qq.com',
             skills: [
-                {name: '技能名称如 HTML CSS', description: '技能描述'},
-                {name: '技能名称如 HTML CSS', description: '技能描述'},
-                {name: '技能名称如 HTML CSS', description: '技能描述'},
-                {name: '技能名称如 HTML CSS', description: '技能描述'},
+                {name: '技能名称', description: '技能描述'},
+                {name: '技能名称', description: '技能描述'},
+                {name: '技能名称', description: '技能描述'},
+                {name: '技能名称S', description: '技能描述'},
             ],
             projects: [
-                {name: '项目名称', link: 'http://...', keywords: '填写关键词', description: '详细描述'},
-                {name: '项目名称', link: 'http://...', keywords: '填写关键词', description: '详细描述'}
+                {name: '项目名称', link: '项目地址...', keywords: '填写关键词', description: '详细描述'},
+                {name: '项目名称', link: '项目地址...', keywords: '填写关键词', description: '详细描述'}
             ]
         },
         shareLink: '暂时还没有分享链接，请编辑保存后再来',
@@ -67,6 +67,7 @@ let app= new Vue({
                     result= result[keys[i]]
                 }
             }
+           
         },
         hasLogin(){
             return !!this.currentUser.objectId
@@ -107,7 +108,15 @@ let app= new Vue({
             alert('注销成功')
             window.location.reload()//重新加载
         },
-        
+        onClickEdit(){
+            if(this.hasLogin()){
+                this.edit = true
+            }else{
+                alert('请先登录')
+            }
+           
+            console.log(1)
+        },  
         onClickSave(){
             let currentUser = AV.User.current()
             console.log(1)
@@ -118,6 +127,7 @@ let app= new Vue({
                 this.saveResume()
 
             }
+            this.edit= false
         },
         saveResume(){
             console.log(3)
@@ -143,7 +153,7 @@ let app= new Vue({
                     // Object.assign(this.resume, resume)
                     return resume  //return ,自己处理resume
                 }, (error)=>{
-                    alert('暂时还没有数据')
+                    alert('请编辑后保存简历')
                 })
         },
         print(){
