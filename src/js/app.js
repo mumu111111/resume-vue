@@ -109,10 +109,12 @@ let app= new Vue({
             window.location.reload()//重新加载
         },
         onClickEdit(){
-            if(this.hasLogin()){
-                this.edit = true
+            let currentUser = AV.User.current()
+            console.log(1)
+            if(!currentUser){
+                this.loginVisible= true
             }else{
-                alert('请先登录')
+                this.edit = true
             }
            
             console.log(1)
@@ -153,7 +155,7 @@ let app= new Vue({
                     // Object.assign(this.resume, resume)
                     return resume  //return ,自己处理resume
                 }, (error)=>{
-                    alert('请编辑后保存简历')
+                    alert('请编辑简历后不要忘记保存哦')
                 })
         },
         print(){
